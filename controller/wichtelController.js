@@ -32,6 +32,8 @@ app.controller("wichtelController", function ($scope, $http, $log, NOTIFICATIONS
         if ($scope.sent) $scope.notEnoughWichtels = false;
 
         if (isValid && $scope.enoughWichtels) {
+            $log.log("Sent");
+
             $http.post("sendWichtel.php", wichtels)
                 .success(function (response) {
                     $scope.sent = false;
