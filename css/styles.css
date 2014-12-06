@@ -1,0 +1,23 @@
+* {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+.support {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.row {
+    /*margin: 10px 0;*/
+}
+
+[class*=col-md-] {
+    margin: 10px 0;
+}
+
+.glyphicon-trash{
+    color: #000000;
+}

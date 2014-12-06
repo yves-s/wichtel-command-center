@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="wichtel" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="wichtel" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="wichtel" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="wichtel" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wichtel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="libs/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="container" ng-controller="wichtelController">
+    <div class="notifications">
+        <div class="alert alert-info" role="alert" ng-show="sent">
+            {{NOTIFICATIONS.sent}}
+        </div>
+        <div class="alert alert-success" role="alert" ng-show="success">
+            {{NOTIFICATIONS.success}}
+        </div>
+        <div class="alert alert-warning" role="alert" ng-show="notEnoughWichtels">
+            {{NOTIFICATIONS.warning}}
+        </div>
+        <div class="alert alert-danger" role="alert" ng-show="error">
+            {{NOTIFICATIONS.error}}
+        </div>
+    </div>
+
+    <h1>Wichtelmann Control Center</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-success" ng-click="addWichtel()">Add</button>
+        </div>
+    </div>
+    <form role="form" name="wichtelForm" ng-submit="wichtelExpress(wichtelForm.$valid)" novalidate>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <div class="input-group-addon">@</div>
+                    <input class="form-control" name="name" placeholder="Optional: Absender eMail" ng-model="sender.email" type="email">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <input class="form-control" name="email" placeholder="Optional: Message" ng-model="sender.message">
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-animate=" 'animate'">
+            <ng-form name="innerWichtelForm">
+                <div class="col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
+                    <input class="form-control" name="name" placeholder="Name" ng-model="wichtel.name" required>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group"
+                         ng-class="{ 'has-error' : innerWichtelForm.email.$invalid && (!innerWichtelForm.email.$pristine || submitted) }">
+                        <div class="input-group-addon">@</div>
+                        <input class="form-control" name="email" placeholder="eMail" ng-model="wichtel.email" type="email" required>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type='button' class="btn btn-danger glyphicon glyphicon-trash pull-left" aria-hidden="true" ng-click="removeWichtel(index)"></button>
+                </div>
+            </ng-form>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-default glyphicon glyphicon-send" ng-disabled="wichtelForm.$invalid || sent"></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-animate/angular-animate.min.js"></script>
+
+<script src="app.js"></script>
+<script src="config/config.js"></script>
+<script src="controller/wichtelController.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "Wichtel-CLI",
+  "main": "app.js",
+  "version": "1.0.0",
+  "authors": [
+    "yves-s <yves.schleich@gmail.com>"
+  ],
+  "description": "A small angular bootstrap project to find your wichtel",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.5",
+    "bootstrap": "~3.3.1",
+    "html5-boilerplate": "~4.3.0"
+  }
+}
