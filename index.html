@@ -51,30 +51,30 @@
     </div>
     <form role="form" name="wichtelForm" ng-submit="wichtelExpress(wichtelForm.$valid)" novalidate>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-xs-10 col-md-5">
                 <div class="input-group">
                     <div class="input-group-addon">@</div>
                     <input class="form-control" name="name" placeholder="Optional: Absender eMail" ng-model="sender.email" type="email">
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-xs-10 col-md-5">
                 <input class="form-control" name="email" placeholder="Optional: Message" ng-model="sender.message">
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-xs-2 col-md-2"></div>
         </div>
         <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-animate=" 'animate'">
             <ng-form name="innerWichtelForm">
-                <div class="col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
+                <div class="col-xs-10 col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
                     <input class="form-control" name="name" placeholder="Name" ng-model="wichtel.name" required>
                 </div>
-                <div class="col-md-5">
+                <div class="col-xs-10 col-md-5">
                     <div class="input-group"
                          ng-class="{ 'has-error' : innerWichtelForm.email.$invalid && (!innerWichtelForm.email.$pristine || submitted) }">
                         <div class="input-group-addon">@</div>
                         <input class="form-control" name="email" placeholder="eMail" ng-model="wichtel.email" type="email" required>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2 col-md-2">
                     <button type='button' class="btn btn-danger glyphicon glyphicon-trash pull-left" aria-hidden="true" ng-click="removeWichtel(index)"></button>
                 </div>
             </ng-form>
