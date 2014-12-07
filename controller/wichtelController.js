@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('wichtel');
 
 app.controller("wichtelController", function ($scope, $http, $log, NOTIFICATIONS) {
@@ -32,13 +34,11 @@ app.controller("wichtelController", function ($scope, $http, $log, NOTIFICATIONS
         if ($scope.sent) $scope.notEnoughWichtels = false;
 
         if (isValid && $scope.enoughWichtels) {
-            $log.log("Sent");
-
             $http.post("sendWichtel.php", wichtels)
                 .success(function (response) {
                     $scope.sent = false;
                     $scope.success = true;
-                    $log.log(response);
+
                 }).error(function (data, status, headers, config) {
                     $scope.sent = false;
                     $scope.error = true;
