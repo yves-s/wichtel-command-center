@@ -23,7 +23,7 @@
 
 	function mailWichtel($wichtelArray, $sender){
 		$bearer = ($sender->email) ? $sender->email : "wichtelmann@nordpol.gov";
-		$message = ($sender->message) ? "Message: " . $sender->message : "";
+		$message = ($sender->message) ? "Message: " . $sender->message : "Der Wichtelmann kommt angeritten";
 		$subject = ($sender->subject) ? $sender->subject : "Pssst... dein Wichtel ist...";
 		$from = "from: " . $bearer;
 
