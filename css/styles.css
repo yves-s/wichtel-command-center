@@ -10,12 +10,12 @@
     bottom: 10px;
 }
 
-.row {
-    /*margin: 10px 0;*/
+form .row [class*=col-md-] {
+    margin: 10px 0;
 }
 
-[class*=col-md-] {
-    margin: 10px 0;
+form .row [class*=col-md-] .row [class*=col-md-]{
+    margin: 0;
 }
 
 .glyphicon-trash{

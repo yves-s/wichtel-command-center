@@ -44,25 +44,48 @@
 
     <h1>Wichtelmann Control Center</h1>
 
-    <div class="row">
-        <div class="col-md-4">
-            <button type="button" class="btn btn-success" ng-click="addWichtel()">Add</button>
-        </div>
-    </div>
     <form role="form" name="wichtelForm" ng-submit="wichtelExpress(wichtelForm.$valid)" novalidate>
-        <div class="row">
+
+        <h3><small>Absender</small></h3>
+
+        <div class="row sender">
             <div class="col-xs-10 col-md-5">
-                <div class="input-group">
-                    <div class="input-group-addon">@</div>
-                    <input class="form-control" name="name" placeholder="Optional: Absender eMail" ng-model="sender.email" type="email">
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <label for="senderEmail">E-Mail</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">@</div>
+                      <input class="form-control" name="email" id="senderEmail" placeholder="wichtelmann@nordpol.gov" ng-model="sender.email" type="email">
+                    </div>
+                  </div>
                 </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <label for="senderSubject">Betreff</label>
+                    <input class="form-control" name="subject" id="senderSubject" placeholder="Pssst... dein Wichtel ist..." ng-model="sender.subject" type="text">
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-xs-10 col-md-5">
-                <input class="form-control" name="email" placeholder="Optional: Message" ng-model="sender.message">
+              <div class="form-group">
+                <label for="senderMessage">Nachricht</label>
+                <input class="form-control" name="message" id="senderMessage" placeholder="Der Wichtelmann kommt angeritten" ng-model="sender.message">
+              </div>
             </div>
             <div class="col-xs-2 col-md-2"></div>
         </div>
-        <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-animate=" 'animate'">
+
+        <h3><small>Wichtel</small></h3>
+
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success" ng-click="addWichtel()">Add</button>
+            </div>
+        </div>
+
+        <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-class="{last : $last}" ng-animate=" 'animate'">
             <ng-form name="innerWichtelForm">
                 <div class="col-xs-10 col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
                     <input class="form-control" name="name" placeholder="Name" ng-model="wichtel.name" required>
