@@ -24,12 +24,13 @@
 	function mailWichtel($wichtelArray, $sender){
 		$bearer = ($sender->email) ? $sender->email : "wichtelmann@nordpol.gov";
 		$message = ($sender->message) ? "Message: " . $sender->message : "";
+		$subject = ($sender->subject) ? $sender->subject : "Pssst... dein Wichtel ist...";
 		$from = "from: " . $bearer;
 
 		for($i=0;$i<count($wichtelArray);$i++){
 			$nachricht = "Dein Wichtel ist: " . $wichtelArray[$i]['name'] . " \n ";
 			$nachricht .= $message;
-			mail($wichtelArray[$i]['email'], 'Pssst... dein Wichtel ist...', $nachricht, $from);
+			mail($wichtelArray[$i]['email'], $subject, $nachricht, $from);
 		}
 	}
 
