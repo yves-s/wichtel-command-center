@@ -34,18 +34,22 @@
 		}
 	}
 
-	function sicherungskopie($array, $file){
+	function sicherungskopie($array){
 		$text = "";
-		$dateiname = $file; // Name der Datei
+		$dateiname = uniqid().".txt"; // Name der Datei
+		$backupsrc = 'backupfiles/';
 		// Datei öffnen,
 		// wenn nicht vorhanden dann wird die Datei erstellt.
-		$handler = fOpen($dateiname , "a+");
+		$handler = fOpen($backupsrc.$dateiname , "a+");
 		// Dateiinhalt in die Datei schreiben
+		$text .= "---------------Start of Wichtels------------------ \n";
 		for($i=0;$i<count($array);$i++){
 			$text .= 'Wichtel: ' . $array[$i]['name'] . ' ---- eMail: ' . utf8_decode($array[$i]['email']) . "\n";
 		}
-		$text .= '----------------End of Wichtels------------------';
+		$text .= "----------------End of Wichtels------------------";
 		fWrite($handler , $text);
 		fClose($handler); // Datei schließen
+
+		return $backupsrc.$dateiname;
 	}
 ?>

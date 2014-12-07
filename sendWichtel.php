@@ -1,5 +1,6 @@
 <?php
     include('inc/functions.php');
+    session_start();
 
     $postdata = file_get_contents("php://input");
     $response = json_decode($postdata);
@@ -39,7 +40,7 @@
                     $wichtel = unset_array($wichtel, 0);
                     $email = unset_array($email, 0);
 
-                    sicherungskopie($zufallsWichtel, "sicherungskopie.txt");
+                    $_SESSION['backupfile'] = sicherungskopie($zufallsWichtel);
                     mailWichtel($zufallsWichtel, $sender);
 
                     echo true;
