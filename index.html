@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 
+    <link rel="stylesheet" type="text/css" href="libs/animate-css/animate.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <script src="libs/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -31,16 +32,16 @@
 
     <div class="container" ng-controller="wichtelController">
         <div class="notifications">
-            <div class="alert alert-info" role="alert" ng-show="sent">
+            <div class="alert alert-info" ng-class="{'ng-enter fadeInDown': sent}" role="alert" ng-show="sent">
                 {{NOTIFICATIONS.sent}}
             </div>
-            <div class="alert alert-success" role="alert" ng-show="success">
+            <div class="alert alert-success" ng-class="{'ng-enter fadeInDown': success}" role="alert" ng-show="success">
                 {{NOTIFICATIONS.success}} <span>- Lade <a ng-href="download.php">hier</a> deine Sicherungsdatei</span>
             </div>
-            <div class="alert alert-warning" role="alert" ng-show="notEnoughWichtels">
+            <div class="alert alert-warning" ng-class="{'ng-enter fadeInDown': notEnoughWichtels}" role="alert" ng-show="notEnoughWichtels">
                 {{NOTIFICATIONS.warning}}
             </div>
-            <div class="alert alert-danger" role="alert" ng-show="error">
+            <div class="alert alert-danger" ng-class="{'ng-enter fadeInDown': error}" role="alert" ng-show="error">
                 {{NOTIFICATIONS.error}}
             </div>
         </div>
@@ -85,7 +86,7 @@
             <h3><small>Wichtel</small></h3>
 
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-xs-10 col-md-10">
                     <div class="panel panel-info">
                         <div class="panel-heading">How to</div>
                         <ul class="list-group">
@@ -103,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-class="{last : $last}" ng-animate=" 'animate'">
+            <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-class="{last : $last, fadeInDown : animation.fadeIn, fadeOutUp : animation.fadeOut}">
                 <ng-form name="innerWichtelForm">
                     <div class="col-xs-10 col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
                         <input class="form-control" name="name" placeholder="Name" ng-model="wichtel.name" required>

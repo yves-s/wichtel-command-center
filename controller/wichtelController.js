@@ -12,6 +12,7 @@ app.controller("wichtelController", function ($scope, $http, $log, NOTIFICATIONS
     ];
     var wichtelNames = wichtelEmails;
 
+    $scope.animation = {};
     $scope.wichtels = wichtelEmails;
     $scope.sender = sender;
     $scope.NOTIFICATIONS = NOTIFICATIONS;
@@ -49,10 +50,16 @@ app.controller("wichtelController", function ($scope, $http, $log, NOTIFICATIONS
     };
 
     $scope.addWichtel = function () {
+        $scope.animation.fadeIn = true;
+        $scope.animation.fadeOut = false;
+
         wichtelEmails.push({name: '', email: ''});
     };
 
     $scope.removeWichtel = function (index) {
+        $scope.animation.fadeOut = true;
+        $scope.animation.fadeIn = false;
+
         if (wichtelEmails.length > 1) {
             wichtelEmails.splice(index, 1);
         }

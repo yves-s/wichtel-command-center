@@ -21,3 +21,18 @@ form .row [class*=col-md-] .row [class*=col-md-]{
 .glyphicon-trash{
     color: #000000;
 }
+
+/* Animations */
+.ng-enter, .ng-move{
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.ng-leave{
+    -webkit-animation: fadeOutUp 1s;
+    -moz-animation: fadeOutUp 1s;
+    -o-animation: fadeOutUp 1s;
+    animation: fadeOutUp 1s;
+}
