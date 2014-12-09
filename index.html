@@ -76,7 +76,7 @@
                     <div class="col-xs-10 col-md-5">
                         <div class="form-group">
                             <label for="senderMessage">Nachricht</label>
-                            <input class="form-control" name="message" id="senderMessage" placeholder="Der Wichtelmann kommt angeritten" ng-model="sender.message">
+                            <input class="form-control" name="message" id="senderMessage" placeholder="Kauft ein Wichtelgeschenk für max. 15€" ng-model="sender.message">
                         </div>
                     </div>
                     <div class="col-xs-2 col-md-2"></div>
@@ -86,21 +86,9 @@
             <h3><small>Wichtel</small></h3>
 
             <div class="row">
-                <div class="col-xs-10 col-md-10">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">How to</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">1. Erstelle so viele Wichtel wie du benötigst</li>
-                            <li class="list-group-item">2. Füge Name und E-Mail Adresse der Wichtel hinzu</li>
-                            <li class="list-group-item">3. Automatische Generierung der Wichtelpaare</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-success" ng-click="addWichtel()">Add</button>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-success" ng-click="addWichtel()">Wichtel hinzufügen</button>
+                    <mark> Fülle die Felder mit Namen und E-Mail Adresse der Wichtel</mark>
                 </div>
             </div>
 
@@ -122,7 +110,9 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-default glyphicon glyphicon-send" ng-disabled="wichtelForm.$invalid || sent"></button>
+                    <button type="submit" class="btn btn-default" ng-disabled="wichtelForm.$invalid || sent">
+                        Wichtel versenden
+                    </button>
                 </div>
             </div>
         </form>
