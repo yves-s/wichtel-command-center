@@ -1,2 +1,2 @@
-wichtel-cli
+Wichtel Command Center
 ===========

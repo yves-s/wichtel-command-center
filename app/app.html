@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>{%=o.htmlWebpackPlugin.options.pkg.title %}</title>
+</head>
+
+<body ng-app="app" ng-strict-di>
+    <md-content flex layout-fill layout="column">
+        <div ui-view="content" flex layout-fill layout-padding></div>
+    </md-content>
+    {% for (var chunk in o.htmlWebpackPlugin.files) { %}
+    <script src="{%=o.htmlWebpackPlugin.files[chunk]%}"></script>
+    {% } %}
+</body>
+<!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->
+
+</html>

@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="messages">
+        <div class="alert alert-info" ng-class="{'ng-enter fadeInDown': sent}" role="alert" ng-show="sent">
+            {{MESSAGES.SENT}}
+        </div>
+        <div class="alert alert-success" ng-class="{'ng-enter fadeInDown': success}" role="alert" ng-show="success">
+            {{MESSAGES.SUCCESS}} <span>- Lade <a ng-href="download.php">hier</a> deine Sicherungsdatei</span>
+        </div>
+        <div class="alert alert-warning" ng-class="{'ng-enter fadeInDown': notEnoughWichtels}" role="alert" ng-show="notEnoughWichtels">
+            {{MESSAGES.WARNING}}
+        </div>
+        <div class="alert alert-danger" ng-class="{'ng-enter fadeInDown': error}" role="alert" ng-show="error">
+            {{MESSAGES.ERROR}}
+        </div>
+    </div>
+
+    <h1>Wichtelmann Control Center</h1>
+
+    <form role="form" name="wichtelForm" ng-submit="home.wichtelExpress(wichtelForm.$valid)" novalidate>
+
+        <h3><small>Absender [Optional]</small></h3>
+
+        <div class="row sender">
+            <ng-form name="innerSenderForm">
+                <div class="col-xs-10 col-md-5">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="senderEmail">E-Mail</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">@</div>
+                                    <input class="form-control" name="email" id="senderEmail" placeholder="wichtelmann@nordpol.gov" ng-model="sender.email" type="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="senderSubject">Betreff</label>
+                                <input class="form-control" name="subject" id="senderSubject" placeholder="Pssst... dein Wichtel ist..." ng-model="sender.subject" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10 col-md-5">
+                    <div class="form-group">
+                        <label for="senderMessage">Nachricht</label>
+                        <input class="form-control" name="message" id="senderMessage" placeholder="Kauft ein Wichtelgeschenk für max. 15€" ng-model="sender.message">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </ng-form>
+        </div>
+
+        <h3><small>Wichtel</small></h3>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-success" ng-click="home.addWichtel()">Wichtel hinzufügen</button>
+                <mark> Fülle die Felder mit Namen und E-Mail Adresse der Wichtel</mark>
+            </div>
+        </div>
+
+        <div class="row" ng-repeat="(index, wichtel) in wichtels" ng-class="{last : $last, fadeInDown : animation.fadeIn, fadeOutUp : animation.fadeOut}">
+            <ng-form name="innerWichtelForm">
+                <div class="col-xs-10 col-md-5" ng-class="{ 'has-error' : innerWichtelForm.name.$invalid && (!innerWichtelForm.name.$pristine || submitted) }">
+                    <input class="form-control" name="name" placeholder="Name" ng-model="wichtel.name" required>
+                </div>
+                <div class="col-xs-10 col-md-5">
+                    <div class="input-group" ng-class="{ 'has-error' : innerWichtelForm.email.$invalid && (!innerWichtelForm.email.$pristine || submitted) }">
+                        <div class="input-group-addon">@</div>
+                        <input class="form-control" name="email" placeholder="eMail" ng-model="wichtel.email" type="email" required>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                    <button type='button' class="btn btn-danger glyphicon glyphicon-trash pull-left" aria-hidden="true" ng-click="home.removeWichtel(index)"></button>
+                </div>
+            </ng-form>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-default" ng-disabled="wichtelForm.$invalid || sent">
+                    Wichtel versenden
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

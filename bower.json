@@ -1,5 +1,5 @@
 {
-  "name": "Wichtel-CLI",
+  "name": "Wichtel command center",
   "main": "app.js",
   "version": "1.0.0",
   "authors": [
